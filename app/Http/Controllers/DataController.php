@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticket;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -10,7 +11,9 @@ class DataController extends Controller
 {
     public function index(Request $request)
     {
-        return response()->json([]);
+        return response()->json([
+            'tickets' => Ticket::all()
+        ]);
     }
 
     public function reset(Request $request)
