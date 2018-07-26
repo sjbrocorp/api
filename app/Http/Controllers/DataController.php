@@ -12,7 +12,7 @@ class DataController extends Controller
     public function index(Request $request)
     {
         return response()->json([
-            'tickets' => Ticket::all(),
+            'tickets' => Ticket::latest()->get(),
             'currentUser' => $request->user(),
         ]);
     }

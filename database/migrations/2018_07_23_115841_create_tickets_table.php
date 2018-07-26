@@ -22,6 +22,7 @@ class CreateTicketsTable extends Migration
             $table->text('telephone')->nullable();
             $table->string('extension')->nullable();
             $table->text('description');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -35,7 +35,9 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket = $request->user()->tickets()->create($request->all());
+        $ticket = $request->user()->tickets()->create($request->only([
+            'name', 'email', 'description', 'contact', 'telephone', 'extension'
+        ]));
         return response()->json($ticket);
     }
 
@@ -47,7 +49,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return response()->json($ticket);
     }
 
     /**
@@ -70,7 +72,7 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        return response()->json($ticket->update($request->all()));
     }
 
     /**
