@@ -21,8 +21,9 @@ class DataController extends Controller
     {
         if (env('APP_ENV') === 'testing')
         {
-            Artisan::call('migrate:refresh', [
-                '--seed' => $request->input('seed')
+            Artisan::call('migrate:refresh');
+            Artisan::call('db:seed', [
+                '--class' => 'UserSeeder'
             ]);
             return response()->json(User::first());
         }
