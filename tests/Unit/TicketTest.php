@@ -2,7 +2,9 @@
 
 namespace Tests\Unit;
 
+use App\Message;
 use App\Ticket;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,8 +21,16 @@ class TicketTest extends TestCase
             'user_id' => 1,
             'name' => 'Test Name',
             'email' => 'foo@bar.com',
-            'description' => 'Lorem ipsum'
+            'description' => 'Lorem ipsum',
+            'source' => 'Foo'
         ]);
         $this->assertEquals('Pending', $ticket->status);
+    }
+
+    /** @test */
+    public function it_has_messages()
+    {
+        $ticket = factory(Ticket::class)->create();
+        $this->assertInstanceOf(Collection::class, $ticket->messages);
     }
 }

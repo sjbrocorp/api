@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('data', 'DataController@index');
     Route::resource('tickets', 'TicketController');
+    Route::resource('tickets/{ticket}/messages', 'MessageController');
 });
 
 Route::post('data', 'DataController@reset');
