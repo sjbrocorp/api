@@ -23,6 +23,7 @@ class CreateTicketsTable extends Migration
             $table->string('extension')->nullable();
             $table->text('description');
             $table->string('status');
+            $table->string('source');
             $table->timestamps();
         });
     }
