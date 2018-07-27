@@ -36,7 +36,7 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $ticket = $request->user()->tickets()->create($request->only([
-            'name', 'email', 'description', 'contact', 'telephone', 'extension', 'source', 'productType'
+            'name', 'email', 'description', 'contact', 'telephone', 'extension', 'source', 'productType', 'problemType'
         ]));
         return response()->json($ticket);
     }

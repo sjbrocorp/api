@@ -25,6 +25,7 @@ class CreateTicketsTable extends Migration
             $table->string('status');
             $table->string('source');
             $table->string('productType')->nullable();
+            $table->string('problemType')->nullable();
             $table->timestamps();
         });
     }
